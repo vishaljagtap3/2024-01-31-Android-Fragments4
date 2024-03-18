@@ -17,6 +17,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         initViews()
         initListeners()
+
+        //supportFragmentManager.popBackStack()
     }
 
     private fun initViews() {
@@ -30,6 +32,7 @@ class MainActivity : AppCompatActivity() {
 
             val fragmentTransaction = supportFragmentManager.beginTransaction()
             fragmentTransaction.add(R.id.mainContainer, counterFragment, "tag1")
+            fragmentTransaction.addToBackStack(null)
             fragmentTransaction.commit()
 
             fragmentsList.add(counterFragment)
@@ -39,6 +42,7 @@ class MainActivity : AppCompatActivity() {
             if(fragmentsList.size > 0) {
                 val fragmentTransaction = supportFragmentManager.beginTransaction()
                 fragmentTransaction.remove(fragmentsList[0])
+                //fragmentTransaction.addToBackStack(null)
                 fragmentTransaction.commit()
                 fragmentsList.removeAt(0)
             }
